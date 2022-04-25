@@ -33,7 +33,7 @@ def get_planets():
     planet_response = []
     for planet in planets:
         planet_response.append(planet.to_json())
-    return jsonify(planet_response)
+    return jsonify(planet_response), 200
 
 
 def validate_planet(planet_id):
