@@ -52,7 +52,7 @@ def validate_planet(planet_id):
 def get_one_planet(planet_id):
     planet_id = validate_planet(planet_id)
 
-    return jsonify(planet_id.to_json())
+    return jsonify(planet_id.to_json()), 200
     
 
 
