@@ -16,18 +16,13 @@ def post_new_planet():
 
     return make_response(f"Planet {new_planet.name} successfully created", 201)
 
-
-
-planets_bp = Blueprint("planets", __name__, url_prefix = "/planets")
-
 @planets_bp.route("", methods=["GET"])
 def read_all_planets():
     planets_response = []
     planets = Planet.query.all()
-    for planet in planets:
-        planets_response.append(planet.to_json())
+    planets_response = [planet.to_json() for planet in planets]
         
-    return jsonify(planets_response)
+    return jsonify(planets_response), 200
 
 
 # def validate_planet(planet_id):
