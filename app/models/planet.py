@@ -14,4 +14,16 @@ class Planet(db.Model):
             "order in solar system": self.order_in_ss
         }
 
-        
+    def update(self, update_body):
+        self.name = update_body["name"]
+        self.description = update_body["description"]
+        self.order_in_ss = update_body["order in solar system"]
+
+    @classmethod
+    def create_planet(cls, request_body):
+        new_planet = cls(
+            name=request_body['name'],
+            description=request_body['description'],
+            order_in_ss=request_body['order in solar system'],
+        )
+        return new_planet
