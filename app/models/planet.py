@@ -14,7 +14,7 @@ class Planet(db.Model):
             "order in solar system": self.order_in_ss
         }
 
-    def update(self, update_body):
+    def update_planet(self, update_body):
         self.name = update_body["name"]
         self.description = update_body["description"]
         self.order_in_ss = update_body["order in solar system"]

@@ -33,8 +33,10 @@ def read_one_planet(planet_id):
 
 @planets_bp.route("/<planet_id>", methods=["PUT"])
 def update_planet(planet_id):
-    update_body = request.get_json()
     planet = validate_planet(planet_id)
+    request_body = request.get_json()
+    
+    planet.update_planet(request_body)
 
     db.session.commit()
 
