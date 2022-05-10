@@ -5,8 +5,9 @@ class Planet(db.Model):
     name = db.Column(db.String)
     description = db.Column(db.String)
     order_in_ss = db.Column(db.String)
+    moons = db.relationship("Moon", back_populates="planet")
 
-    def to_json(self):
+    def to_json(self, request_body):
         return {
             "id": self.id, 
             "name": self.name, 
