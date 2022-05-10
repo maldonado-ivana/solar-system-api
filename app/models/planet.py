@@ -7,12 +7,13 @@ class Planet(db.Model):
     order_in_ss = db.Column(db.String)
     moons = db.relationship("Moon", back_populates="planet")
 
-    def to_json(self, request_body):
+    def to_json(self):
         return {
             "id": self.id, 
             "name": self.name, 
             "description": self.description,
-            "order in solar system": self.order_in_ss
+            "order in solar system": self.order_in_ss,
+            # "moon": self.moon
         }
 
     def update_planet(self, update_body):
@@ -25,6 +26,7 @@ class Planet(db.Model):
         new_planet = cls(
             name=request_body['name'],
             description=request_body['description'],
-            order_in_ss=request_body['order in solar system'],
+            order_in_ss=request_body['order in solar system']
+
         )
         return new_planet
