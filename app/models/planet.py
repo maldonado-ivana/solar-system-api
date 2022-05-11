@@ -35,3 +35,5 @@ class Planet(db.Model):
 
         )
         return new_planet
+
+        
