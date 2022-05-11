@@ -1,4 +1,5 @@
 from app import db
+from app.models.moon import Moon
 
 class Planet(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -8,12 +9,16 @@ class Planet(db.Model):
     moons = db.relationship("Moon", back_populates="planet")
 
     def to_json(self):
+        names = []
+        for moon in self.moons:
+            names.append(moon.name)
+
         return {
             "id": self.id, 
             "name": self.name, 
             "description": self.description,
             "order in solar system": self.order_in_ss,
-            # "moon": self.moon
+            "moons": names
         }
 
     def update_planet(self, update_body):
